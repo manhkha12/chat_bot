@@ -10,7 +10,7 @@ const int splashDuration = 3;
 
 class AppCubit extends Cubit<AppState> {
   final AuthRepository authRepository;
-
+bool skipSplashDelay = false;
   AppCubit({
     required this.authRepository,
   }) : super(AppState.checking());
@@ -22,6 +22,9 @@ class AppCubit extends Cubit<AppState> {
         unauthorized();
         return;
       }
+      if (!skipSplashDelay) {
+      await Future.delayed(const Duration(seconds: splashDuration));
+    }
       final res = await Future.wait([
         // authRepository.authToken(),
         Future.delayed(const Duration(seconds: splashDuration))

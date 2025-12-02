@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home/features/common/splash_screen.dart';
+import 'package:smart_home/features/intro/intro_screen.dart';
 import 'package:smart_home/features/login/login_screen.dart';
 import 'package:smart_home/features/main_screen.dart';
 import 'package:smart_home/features/register/register.dart';
@@ -9,6 +10,7 @@ class RouteName {
   static const String main = '/main';
   static const String register = '/register';
   static const String login = '/login';
+  static const String intro = '/intro';
 }
 
 RouteFactory onGenerateRoutes() {
@@ -19,6 +21,15 @@ RouteFactory onGenerateRoutes() {
         builder: (context) => const SplashScreen(),
       );
     }
+
+      if (settings.name == RouteName.intro) {
+      return MaterialPageRoute(
+        settings: settings,
+        builder: (context) =>
+            const IntroScreen(), 
+      );
+    }
+
     if (settings.name == RouteName.main) {
       return MaterialPageRoute(
         settings: settings,

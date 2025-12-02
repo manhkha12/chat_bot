@@ -34,8 +34,71 @@ class $AssetsIconsGen {
   /// File path: assets/icons/iconBack.svg
   SvgGenImage get iconBack => const SvgGenImage('assets/icons/back.svg');
 
+  /// File path: assets/icons/editting.svg
+  SvgGenImage get edit => const SvgGenImage('assets/icons/editting.svg');
+
+  /// File path: assets/icons/email.svg
+  SvgGenImage get email => const SvgGenImage('assets/icons/emailIcon.svg');
+
+  /// File path: assets/icons/eyeOff.svg
+  SvgGenImage get eyeOff => const SvgGenImage('assets/icons/eyeOff.svg');
+
+  /// File path: assets/icons/eyeOn.svg
+  SvgGenImage get eyeOn => const SvgGenImage('assets/icons/eyeOn.svg');
+
+  /// File path: assets/icons/filter.svg
+  SvgGenImage get filter => const SvgGenImage('assets/icons/filter.svg');
+
+  /// File path: assets/icons/leftChevon.svg
+  SvgGenImage get leftChevon =>
+      const SvgGenImage('assets/icons/leftchevon.svg');
+
+  /// File path: assets/icons/locking.svg
+  SvgGenImage get lock => const SvgGenImage('assets/icons/locking.svg');
+
+  /// File path: assets/icons/userIcon.svg
+  SvgGenImage get userIcon => const SvgGenImage('assets/icons/userIcon.svg');
+
+  /// File path: assets/icons/search.svg
+  SvgGenImage get search => const SvgGenImage('assets/icons/xearch.svg');
+
+  /// File path: assets/icons/chervonRight.svg
+  SvgGenImage get right => const SvgGenImage('assets/icons/Line.svg');
+
+  /// File path: assets/icons/left.svg
+  SvgGenImage get left => const SvgGenImage('assets/icons/arrowLeft.svg');
+
+  /// File path: assets/icons/divide.svg
+  SvgGenImage get divide => const SvgGenImage('assets/icons/divide.svg');
+
+  /// File path: assets/icons/google.svg
+  SvgGenImage get google => const SvgGenImage('assets/icons/google.svg');
+
+  /// File path: assets/icons/facebook.svg
+  SvgGenImage get facebook => const SvgGenImage('assets/icons/facebook.svg');
+ /// File path: assets/icons/teamcro.svg
+  SvgGenImage get team => const SvgGenImage('assets/icons/teamcro.svg');
+
   /// List of all assets
-  List<SvgGenImage> get values => [boardIcon, iconBack];
+  List<SvgGenImage> get values => [
+        boardIcon,
+        iconBack,
+        edit,
+        email,
+        eyeOff,
+        team,
+        eyeOn,
+        filter,
+        left,
+        right,
+        leftChevon,
+        lock,
+        userIcon,
+        search,
+        divide,
+        google,
+        facebook
+      ];
 }
 
 class $AssetsImagesGen {
@@ -44,22 +107,40 @@ class $AssetsImagesGen {
   /// File path: assets/images/configurating.json
   String get configurating => 'assets/images/configurating.json';
 
-
-/// File path: assets/images/smart_home.json
+  /// File path: assets/images/smart_home.json
   String get smartHome => 'assets/images/smart_home.json';
+
+  /// File path: assets/images/liveChatBot.json
+  String get liveChatBot => 'assets/images/Livechatbot.json';
 
   /// File path: assets/images/user.png
   AssetGenImage get user => const AssetGenImage('assets/images/user.png');
 
+  /// File path: assets/images/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
+
+  /// File path: assets/images/roboImage.png
+  AssetGenImage get roboImage =>
+      const AssetGenImage('assets/images/roboImage.png');
+
+  /// File path: assets/images/robotImage.png
+  AssetGenImage get robotImage =>
+      const AssetGenImage('assets/images/robotImage.png');
+
+  /// File path: assets/images/robotImg.png
+  AssetGenImage get robotImg =>
+      const AssetGenImage('assets/images/robotImg.png');
+
   /// List of all assets
-  List<String> get values => [
-        configurating,
-        smartHome
-      ];
+  List<String> get values => [configurating, liveChatBot, smartHome];
 
   /// List of all assets as images
   List<AssetGenImage> get images => [
         user,
+        logo,
+        roboImage,
+        robotImage,
+        robotImg,
       ];
 }
 

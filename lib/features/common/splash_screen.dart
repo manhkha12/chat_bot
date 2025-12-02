@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smart_home/gen/assets.gen.dart';
 import 'package:smart_home/shared/cubits/app_cubit/app_cubit.dart';
+import 'package:smart_home/shared/widgets/app_text.dart';
 
 import '../../routes.dart';
 
@@ -38,21 +39,33 @@ class _SplashScreenState extends State<SplashScreen>
         authorized: (user) =>
             Navigator.of(context).pushReplacementNamed(RouteName.main),
         unAuthorized: () =>
-            Navigator.of(context).pushReplacementNamed(RouteName.login),
+            Navigator.of(context).pushReplacementNamed(RouteName.intro),
       ),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Lottie.asset(
-            Assets.images.smartHome,
-            controller: _controller,
-            onLoaded: (composition) {
-              _controller
-                ..duration = composition.duration
-                ..forward();
-            },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Lottie.asset(
+                  Assets.images.liveChatBot,
+                  controller: _controller,
+                  onLoaded: (composition) {
+                    _controller
+                      ..duration = composition.duration
+                      ..forward();
+                  },
+                ),
+              ),
+            ),
           ),
-        ),
+          const AppText(
+            'BrainBox',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          )
+        ],
       ),
     ));
   }
