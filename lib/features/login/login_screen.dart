@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home/gen/assets.gen.dart';
+import 'package:smart_home/routes.dart';
 import 'package:smart_home/shared/extensions/extensions.dart';
 import 'package:smart_home/shared/widgets/app_layout.dart';
 import 'package:smart_home/shared/widgets/app_text.dart';
@@ -153,14 +154,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                 fontSize: width * 0.04,
                               ),
                               children: [
-                                TextSpan(
-                                  text: 'Sign Up',
-                                  style: TextStyle(
-                                    color: context.colors.black,
-                                    fontSize: width * 0.045,
-                                    fontWeight: FontWeight.bold,
+                                WidgetSpan(
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, RouteName.register);
+                                    },
+                                    child: AppText(
+                                      'Sign Up',
+                                      style: TextStyle(
+                                        color: context.colors.black,
+                                        fontSize: width * 0.045,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                )
                               ],
                             )),
                         SizedBox(height: height * 0.03),

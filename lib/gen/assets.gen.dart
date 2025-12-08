@@ -76,17 +76,57 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/facebook.svg
   SvgGenImage get facebook => const SvgGenImage('assets/icons/facebook.svg');
- /// File path: assets/icons/teamcro.svg
+
+  /// File path: assets/icons/teamcro.svg
   SvgGenImage get team => const SvgGenImage('assets/icons/teamcro.svg');
+
+  /// File path: assets/icons/home.svg
+  SvgGenImage get home => const SvgGenImage('assets/icons/homeee.svg');
+
+  /// File path: assets/icons/historiChat.svg
+  SvgGenImage get historiChat =>
+      const SvgGenImage('assets/icons/historyChat.svg');
+
+  /// File path: assets/icons/setting_profile.svg
+  SvgGenImage get settingProfile =>
+      const SvgGenImage('assets/icons/setting_profile.svg');
+
+  /// File path: assets/icons/selection.svg
+  SvgGenImage get selection => const SvgGenImage('assets/icons/selection.svg');
+
+  /// File path: assets/icons/sot_horizontal.svg
+  SvgGenImage get dotHorizontal =>
+      const SvgGenImage('assets/icons/dots-horizontal.svg');
+
+  /// File path: assets/icons/logOut.svg
+  SvgGenImage get logOut => const SvgGenImage('assets/icons/logOutt.svg');
+
+  /// File path: assets/icons/help.svg
+  SvgGenImage get help => const SvgGenImage('assets/icons/help.svg');
+
+  /// File path: assets/icons/settings.svg
+  SvgGenImage get settings => const SvgGenImage('assets/icons/settings.svg');
+
+  /// File path: assets/icons/chervon_right.svg
+  SvgGenImage get chevronRight => const SvgGenImage('assets/icons/chevron_right.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [
         boardIcon,
         iconBack,
         edit,
+        help,
+        settings,
         email,
+        logOut,
         eyeOff,
+        dotHorizontal,
+        home,
+        historiChat,
+        settingProfile,
+        selection,
         team,
+        chevronRight,
         eyeOn,
         filter,
         left,
@@ -116,6 +156,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/user.png
   AssetGenImage get user => const AssetGenImage('assets/images/user.png');
 
+  /// File path: assets/images/accoutOwner.png
+  AssetGenImage get accountOwner =>
+      const AssetGenImage('assets/images/account_owner.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 
@@ -139,6 +183,7 @@ class $AssetsImagesGen {
         user,
         logo,
         roboImage,
+        accountOwner,
         robotImage,
         robotImg,
       ];

@@ -38,6 +38,15 @@ class _IntroScreenState extends State<IntroScreen> {
     );
   }
 
+  void _toSignup() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('is_first_launch', false);
+    Navigator.of(context).pushNamedAndRemoveUntil(
+      RouteName.register,
+      (route) => false,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppLayout(
@@ -113,7 +122,7 @@ class _IntroScreenState extends State<IntroScreen> {
                       AppButton(
                         label: 'Sign Up',
                         primaryColor: context.colors.offlineColor,
-                        onPressed: () {},
+                        onPressed: _toSignup,
                       ),
                       SizedBox(
                         height: 40,
