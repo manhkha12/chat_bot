@@ -107,6 +107,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/settings.svg
   SvgGenImage get settings => const SvgGenImage('assets/icons/settings.svg');
 
+  /// File path: assets/icons/send.svg
+  SvgGenImage get send => const SvgGenImage('assets/icons/send.svg');
+
   /// File path: assets/icons/chervon_right.svg
   SvgGenImage get chevronRight => const SvgGenImage('assets/icons/chevron_right.svg');
 
@@ -115,6 +118,7 @@ class $AssetsIconsGen {
         boardIcon,
         iconBack,
         edit,
+        send,
         help,
         settings,
         email,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home/gen/assets.gen.dart';
+import 'package:smart_home/routes.dart';
 import 'package:smart_home/shared/extensions/extensions.dart';
 import 'package:smart_home/shared/widgets/app_layout.dart';
 import 'package:smart_home/shared/widgets/app_text.dart';
@@ -49,7 +50,9 @@ class HomePageScreen extends StatelessWidget {
           const SizedBox(height: 40),
           AppButton(
               label: 'Get Started',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, RouteName.chatScreen);
+              },
               radius: BorderRadius.circular(10),
               primaryColor: context.colors.black,
               padding:

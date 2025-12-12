@@ -81,18 +81,18 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigation(
-      initIndex: 1,
-        inActiveColor: context.colors.unHighlightTab,
-        activeColor: context.colors.highlightTab,
-        backgroundColor: context.colors.primaryBackground,
-        iconSize: 30,
-        // decoration: BoxDecoration(
-        //   boxShadow: [
-        //     BoxShadow(
-        //       color: context.colors.divider,
-        //       blurRadius: 5,
-        //     )
-        //   ],
+      initIndex: 0,
+      inActiveColor: context.colors.unHighlightTab,
+      activeColor: context.colors.highlightTab,
+      backgroundColor: context.colors.primaryBackground,
+      iconSize: 30,
+      // decoration: BoxDecoration(
+      //   boxShadow: [
+      //     BoxShadow(
+      //       color: context.colors.divider,
+      //       blurRadius: 5,
+      //     )
+      //   ],
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -114,14 +114,13 @@ class _MainScreenState extends State<MainScreen> {
         ),
         BottomNavigationItem(
           icon: Assets.icons.historiChat.path,
-          page: const HistoryChatScreen(),
+          page: const ChatHistoryScreen(),
         ),
         BottomNavigationItem(
           icon: Assets.icons.settingProfile.path,
           page: const SettingProfileScreen(),
         ),
       ],
-  
     );
   }
 }
