@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home/features/common/splash_screen.dart';
 import 'package:smart_home/features/history_chat/history_chat_screen.dart';
+import 'package:smart_home/features/home_page/chat_message_screen.dart';
 import 'package:smart_home/features/home_page/home_page_screen.dart';
 import 'package:smart_home/features/intro/intro_screen.dart';
 import 'package:smart_home/features/login/login_screen.dart';
@@ -19,6 +20,7 @@ class RouteName {
   static const String profile = '/profile';
   static const String selection = '/selection';
   static const String historyChat = '/historyChat';
+  static const String chatScreen = '/chatScreen';
 }
 
 RouteFactory onGenerateRoutes() {
@@ -44,6 +46,9 @@ RouteFactory onGenerateRoutes() {
             const SettingProfileScreen(), 
       );
     }
+    if(settings.name== RouteName.chatScreen){
+      return MaterialPageRoute(settings: settings,builder: (context)=>const ChatScreen());
+    }
     if (settings.name == RouteName.home) {
       return MaterialPageRoute(
         settings: settings,
@@ -55,7 +60,7 @@ RouteFactory onGenerateRoutes() {
       return MaterialPageRoute(
         settings: settings,
         builder: (context) =>
-            const HistoryChatScreen(), 
+            const ChatHistoryScreen(), 
       );
     }
     if (settings.name == RouteName.selection) {
