@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_home/gen/assets.gen.dart';
 import 'package:smart_home/routes.dart';
 import 'package:smart_home/shared/extensions/extensions.dart';
+import 'package:smart_home/shared/utils/validate_form.dart';
 import 'package:smart_home/shared/widgets/app_layout.dart';
 import 'package:smart_home/shared/widgets/app_text.dart';
 import 'package:smart_home/shared/widgets/app_text_form_field.dart';
@@ -68,6 +69,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         SizedBox(height: height * 0.02),
                         AppTextFormField(
+                          validator:(value) {
+                            Validation.validateEmail(value);
+                          },
                           borderRadius: BorderRadius.circular(width * 0.025),
                           hintText: 'Enter Your Email',
                           prefixIcon: SizedBox(
@@ -99,9 +103,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius:
                                   BorderRadius.circular(width * 0.025),
                               hintText: 'Enter Your Password',
-                              // validator: (value) {
-                              //   return Validation.validatePass(value);
-                              // },
+                              validator: (value) {
+                                return Validation.validatePass(value);
+                              },
                               obscured: !isOn,
                               // onChanged: (value) => loginCubit.setPassword(value),
                               suffixIcon: GestureDetector(

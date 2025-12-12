@@ -118,6 +118,8 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:smart_home/features/setting_profile/update_profile_screen.dart';
+import 'package:smart_home/features/setting_profile/account_security_screen.dart';
 import 'package:smart_home/gen/assets.gen.dart';
 import 'package:smart_home/shared/extensions/extensions.dart';
 import 'package:smart_home/shared/widgets/app_text.dart';
@@ -242,7 +244,12 @@ class SettingProfileScreen extends StatelessWidget {
                 icon: Icons.settings_outlined,
                 title: 'Preferences',
                 onTap: () {
-                  // Navigate to preferences
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const UpdateProfileScreen(),
+                    ),
+                  );
                 },
               ),
 
@@ -253,7 +260,12 @@ class SettingProfileScreen extends StatelessWidget {
                 icon: Icons.lock_outline_rounded,
                 title: 'Account Security',
                 onTap: () {
-                  // Navigate to security
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AccountSecurityScreen(),
+                    ),
+                  );
                 },
               ),
 
