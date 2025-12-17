@@ -1558,3 +1558,16 @@ class ChatMessage {
     this.isSystem = false,
   });
 }
+
+// Model cho chat message
+class ChatMessage {
+  final String text;
+  final bool isUser;
+  final DateTime timestamp;
+
+  ChatMessage({
+    required this.text,
+    required this.isUser,
+    required this.timestamp,
+  });
+}
