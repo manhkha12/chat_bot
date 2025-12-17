@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smart_home/features/selection/schedule_screen.dart';
+import 'package:smart_home/shared/extensions/extensions.dart';
 import 'package:smart_home/shared/widgets/custom_app_bar.dart';
 
 class SelectionScreen extends StatelessWidget {
@@ -73,6 +75,7 @@ class SelectionScreen extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     return Card(
+      color: context.colors.white,
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: InkWell(
@@ -143,79 +146,80 @@ class SelectionScreen extends StatelessWidget {
   }
 }
 
-// Screen Lịch học
-class ScheduleScreen extends StatelessWidget {
-  const ScheduleScreen({super.key});
+// // Screen Lịch học
+// class ScheduleScreen extends StatelessWidget {
+//   const ScheduleScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    final schedules = [
-      {
-        'day': 'Thứ 2',
-        'subject': 'Lập trình Flutter',
-        'time': '07:00 - 09:30',
-        'room': 'A101'
-      },
-      {
-        'day': 'Thứ 3',
-        'subject': 'Cơ sở dữ liệu',
-        'time': '13:00 - 15:30',
-        'room': 'B205'
-      },
-      {
-        'day': 'Thứ 4',
-        'subject': 'Mạng máy tính',
-        'time': '09:00 - 11:30',
-        'room': 'C302'
-      },
-      {
-        'day': 'Thứ 5',
-        'subject': 'Lập trình Flutter',
-        'time': '07:00 - 09:30',
-        'room': 'A101'
-      },
-      {
-        'day': 'Thứ 6',
-        'subject': 'Trí tuệ nhân tạo',
-        'time': '13:00 - 15:30',
-        'room': 'D404'
-      },
-    ];
+//   @override
+//   Widget build(BuildContext context) {
+//     final schedules = [
+//       {
+//         'day': 'Thứ 2',
+//         'subject': 'Lập trình Flutter',
+//         'time': '07:00 - 09:30',
+//         'room': 'A101'
+//       },
+//       {
+//         'day': 'Thứ 3',
+//         'subject': 'Cơ sở dữ liệu',
+//         'time': '13:00 - 15:30',
+//         'room': 'B205'
+//       },
+//       {
+//         'day': 'Thứ 4',
+//         'subject': 'Mạng máy tính',
+//         'time': '09:00 - 11:30',
+//         'room': 'C302'
+//       },
+//       {
+//         'day': 'Thứ 5',
+//         'subject': 'Lập trình Flutter',
+//         'time': '07:00 - 09:30',
+//         'room': 'A101'
+//       },
+//       {
+//         'day': 'Thứ 6',
+//         'subject': 'Trí tuệ nhân tạo',
+//         'time': '13:00 - 15:30',
+//         'room': 'D404'
+//       },
+//     ];
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Lịch học'),
-        backgroundColor: Colors.blue,
-        foregroundColor: Colors.white,
-      ),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: schedules.length,
-        itemBuilder: (context, index) {
-          final schedule = schedules[index];
-          return Card(
-            margin: const EdgeInsets.only(bottom: 12),
-            child: ListTile(
-              leading: CircleAvatar(
-                backgroundColor: Colors.blue,
-                child: Text(
-                  schedule['day']!.split(' ')[1],
-                  style: const TextStyle(color: Colors.white),
-                ),
-              ),
-              title: Text(
-                schedule['subject']!,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              subtitle: Text('${schedule['time']} - Phòng ${schedule['room']}'),
-              trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-            ),
-          );
-        },
-      ),
-    );
-  }
-}
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Lịch học'),
+//         backgroundColor: Colors.blue,
+//         foregroundColor: Colors.white,
+//       ),
+//       body: ListView.builder(
+//         padding: const EdgeInsets.all(16),
+//         itemCount: schedules.length,
+//         itemBuilder: (context, index) {
+//           final schedule = schedules[index];
+//           return Card(
+//             color: context.colors.white,
+//             margin: const EdgeInsets.only(bottom: 12),
+//             child: ListTile(
+//               leading: CircleAvatar(
+//                 backgroundColor: Colors.blue,
+//                 child: Text(
+//                   schedule['day']!.split(' ')[1],
+//                   style: const TextStyle(color: Colors.white),
+//                 ),
+//               ),
+//               title: Text(
+//                 schedule['subject']!,
+//                 style: const TextStyle(fontWeight: FontWeight.bold),
+//               ),
+//               subtitle: Text('${schedule['time']} - Phòng ${schedule['room']}'),
+//               trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+//             ),
+//           );
+//         },
+//       ),
+//     );
+//   }
+// }
 
 // Screen Lịch thi
 class ExamScheduleScreen extends StatelessWidget {
@@ -266,6 +270,7 @@ class ExamScheduleScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final exam = exams[index];
           return Card(
+            color: context.colors.white,
             margin: const EdgeInsets.only(bottom: 12),
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -398,6 +403,7 @@ class GradesScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 final grade = grades[index];
                 return Card(
+                  color: context.colors.white,
                   margin: const EdgeInsets.only(bottom: 12),
                   child: Padding(
                     padding: const EdgeInsets.all(16),
@@ -510,6 +516,7 @@ class NotificationsScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final notification = notifications[index];
           return Card(
+            color: context.colors.white,
             margin: const EdgeInsets.only(bottom: 12),
             child: ListTile(
               leading: Container(
@@ -612,6 +619,7 @@ class CourseDetailsScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final course = courses[index];
           return Card(
+            color: context.colors.white,
             margin: const EdgeInsets.only(bottom: 16),
             child: Padding(
               padding: const EdgeInsets.all(16),

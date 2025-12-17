@@ -26,7 +26,7 @@ bool skipSplashDelay = false;
       await Future.delayed(const Duration(seconds: splashDuration));
     }
       final res = await Future.wait([
-        // authRepository.authToken(),
+        authRepository.authToken(),
         Future.delayed(const Duration(seconds: splashDuration))
       ]);
       for (var e in res) {

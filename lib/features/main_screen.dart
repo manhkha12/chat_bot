@@ -75,52 +75,55 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
   final bottomNavKey = GlobalKey<BottomNavigationState>();
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigation(
-      initIndex: 0,
-      inActiveColor: context.colors.unHighlightTab,
-      activeColor: context.colors.highlightTab,
-      backgroundColor: context.colors.primaryBackground,
-      iconSize: 30,
-      // decoration: BoxDecoration(
-      //   boxShadow: [
-      //     BoxShadow(
-      //       color: context.colors.divider,
-      //       blurRadius: 5,
-      //     )
-      //   ],
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 10,
-          )
+    return BlocListener<AppCubit,AppState>(
+      listener: (_, state) {
+        state.whenOrNull(unAuthorized:() => Navigator.of(context).pushNamedAndRemoveUntil(
+            RouteName.login,
+            (_) => false,
+          ),);
+        
+      },
+      child: BottomNavigation(
+        initIndex: 0,
+        inActiveColor: context.colors.unHighlightTab,
+        activeColor: context.colors.black,
+        backgroundColor: context.colors.primaryBackground,
+        iconSize: 30,
+      
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 10,
+            )
+          ],
+        ),
+        items: [
+          BottomNavigationItem(
+            icon: Assets.icons.home.path,
+            page: const HomePageScreen(),
+          ),
+          BottomNavigationItem(
+            icon: Assets.icons.selection.path,
+            page: const SelectionScreen(),
+          ),
+          BottomNavigationItem(
+            icon: Assets.icons.historiChat.path,
+            page: const ChatHistoryScreen(),
+          ),
+          BottomNavigationItem(
+            icon: Assets.icons.settingProfile.path,
+            page: const SettingProfileScreen(),
+          ),
         ],
       ),
-      items: [
-        BottomNavigationItem(
-          icon: Assets.icons.home.path,
-          page: const HomePageScreen(),
-        ),
-        BottomNavigationItem(
-          icon: Assets.icons.selection.path,
-          page: const SelectionScreen(),
-        ),
-        BottomNavigationItem(
-          icon: Assets.icons.historiChat.path,
-          page: const ChatHistoryScreen(),
-        ),
-        BottomNavigationItem(
-          icon: Assets.icons.settingProfile.path,
-          page: const SettingProfileScreen(),
-        ),
-      ],
     );
   }
 }

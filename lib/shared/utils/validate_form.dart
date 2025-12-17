@@ -1,5 +1,3 @@
-
-
 import 'package:smart_home/features/localization/localizations.dart';
 
 class Validation {
@@ -40,6 +38,16 @@ class Validation {
     }
     if (value.isNotEmpty && value.length < 3) {
       return 'validate.incorrect_username'.tr();
+    }
+    return null;
+  }
+
+  static String? validateRePass(String? value, String? originalPass) {
+    if (value == null || value.isEmpty) {
+      return null;
+    }
+    if (value.isNotEmpty && value != originalPass) {
+      return 'Mật khẩu không khớp';
     }
     return null;
   }

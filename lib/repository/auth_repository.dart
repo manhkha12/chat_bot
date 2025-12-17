@@ -9,8 +9,19 @@ class AuthRepository {
   AuthRepository(this.authApi, this.appProvider);
 
   Future<User> register(Map<String, dynamic> params) async {
+    print(params);
+    
     final response = await authApi.register(params);
-    return User.fromJson(response['user']);
+    return User.fromJson(response);
+  }
+
+  Future<User> login(Map<String, dynamic> params) async {
+    final response = await authApi.login(params);
+    print('AuthRepository: login response: $response');
+
+    // print('AuthRepository: login response: ${response['user']}');
+    await updateToken(response);
+    return User.fromJson(response);
   }
 
   bool get hasAccessToken => appProvider.hasAccessToken;
@@ -27,6 +38,17 @@ class AuthRepository {
   //   // await updateToken(resp);
   //   // return User.fromJson(resp['user']);
   // }
+
+  Future<User> authToken() async {
+    final resp = await authApi.authToken(refreshToken!);
+
+    print('AuthRepository: authToken response: $resp');
+
+    // resp đã là data cuối cùng rồi
+    await updateToken(resp);
+
+    return User.fromJson(resp);
+  }
 
   Future<void> logout() async {
     await appProvider.setAccessToken(null);

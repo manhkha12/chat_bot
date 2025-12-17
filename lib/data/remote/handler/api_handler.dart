@@ -130,7 +130,7 @@ class ApiHandlerImpl implements ApiHandler {
         queryParameters: queryParameters,
         options: options,
       );
-      return resp.data['data'];
+      return resp.data;
     });
   }
 
@@ -148,7 +148,7 @@ class ApiHandlerImpl implements ApiHandler {
         queryParameters: queryParameters,
         options: options,
       );
-      return resp.data['data'];
+      return resp.data;
     });
   }
 
@@ -166,7 +166,7 @@ class ApiHandlerImpl implements ApiHandler {
         queryParameters: queryParameters,
         options: options,
       );
-      return resp.data['data'];
+      return resp.data;
     });
   }
 

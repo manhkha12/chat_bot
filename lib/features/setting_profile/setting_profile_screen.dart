@@ -118,12 +118,33 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_home/features/setting_profile/cubit/profile_student_cubit.dart';
+import 'package:smart_home/features/setting_profile/cubit/profile_student_state.dart';
+import 'package:smart_home/features/setting_profile/update_profile_screen.dart';
+import 'package:smart_home/features/setting_profile/account_security_screen.dart';
 import 'package:smart_home/gen/assets.gen.dart';
+import 'package:smart_home/models/user.dart';
+import 'package:smart_home/routes.dart';
+import 'package:smart_home/shared/cubits/app_cubit/app_cubit.dart';
 import 'package:smart_home/shared/extensions/extensions.dart';
 import 'package:smart_home/shared/widgets/app_text.dart';
 
-class SettingProfileScreen extends StatelessWidget {
+class SettingProfileScreen extends StatefulWidget {
   const SettingProfileScreen({super.key});
+
+  @override
+  State<SettingProfileScreen> createState() => _SettingProfileScreenState();
+}
+
+class _SettingProfileScreenState extends State<SettingProfileScreen> {
+  late ProfileStudentCubit profileStudentCubit;
+  @override
+  void initState() {
+    super.initState();
+    profileStudentCubit = context.read<ProfileStudentCubit>();
+    profileStudentCubit.getProfileStudent();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -132,10 +153,10 @@ class SettingProfileScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.pop(context),
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
+        //   onPressed: () => Navigator.of(context).pop(),
+        // ),
         title: const AppText(
           'Profile',
           fontSize: 18,
@@ -152,127 +173,146 @@ class SettingProfileScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              const SizedBox(height: 20),
+      body: BlocBuilder<ProfileStudentCubit, ProfileStudentState>(
+          builder: (context, state) {
+        if (state.user == null) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
 
-              // Avatar với edit button
-              Stack(
-                children: [
-                  Container(
-                    width: 120,
-                    height: 120,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: context.colors.easyColor.withOpacity(0.3),
-                        width: 3,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          blurRadius: 20,
-                          spreadRadius: 5,
-                        ),
-                      ],
-                    ),
-                    child: ClipOval(
-                      child: Assets.images.accountOwner.image(
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: Container(
-                      width: 36,
-                      height: 36,
+        final user = state.user!;
+        return SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                const SizedBox(height: 20),
+
+                // Avatar với edit button
+                Stack(
+                  children: [
+                    Container(
+                      width: 120,
+                      height: 120,
                       decoration: BoxDecoration(
-                        color: context.colors.easyColor,
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: Colors.white,
+                          color: context.colors.easyColor.withOpacity(0.3),
                           width: 3,
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: context.colors.easyColor.withOpacity(0.3),
-                            blurRadius: 8,
-                            spreadRadius: 1,
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 20,
+                            spreadRadius: 5,
                           ),
                         ],
                       ),
-                      child: const Icon(
-                        Icons.edit_rounded,
-                        color: Colors.white,
-                        size: 18,
+                      child: ClipOval(
+                        child: Assets.images.accountOwner.image(
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          color: context.colors.easyColor,
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: Colors.white,
+                            width: 3,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: context.colors.easyColor.withOpacity(0.3),
+                              blurRadius: 8,
+                              spreadRadius: 1,
+                            ),
+                          ],
+                        ),
+                        child: const Icon(
+                          Icons.edit_rounded,
+                          color: Colors.white,
+                          size: 18,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
 
-              const SizedBox(height: 20),
+                const SizedBox(height: 20),
 
-              // Name
-              const AppText(
-                'Tom Hillson',
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+                // Name
+                AppText(
+                  user.name,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
 
-              const SizedBox(height: 6),
+                const SizedBox(height: 6),
 
-              // Email
-              AppText(
-                'tomhillson@gmail.com',
-                fontSize: 14,
-                color: Colors.grey.shade600,
-              ),
+                // Email
+                AppText(
+                  user.email ?? 'tomhillson@gmail.com',
+                  fontSize: 14,
+                  color: Colors.grey.shade600,
+                ),
 
-              const SizedBox(height: 40),
+                const SizedBox(height: 40),
 
-              // Menu Items
-              _buildMenuItem(
-                context,
-                icon: Icons.settings_outlined,
-                title: 'Preferences',
-                onTap: () {
-                  // Navigate to preferences
-                },
-              ),
+                // Menu Items
+                _buildMenuItem(
+                  context,
+                  icon: Icons.settings_outlined,
+                  title: 'Preferences',
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      arguments: UpdateProfileScreenArguments(cubit: profileStudentCubit, user: user),
+                      RouteName.updateProfileScreen,
+                    );
+                  },
+                ),
 
-              const SizedBox(height: 12),
+                const SizedBox(height: 12),
 
-              _buildMenuItem(
-                context,
-                icon: Icons.lock_outline_rounded,
-                title: 'Account Security',
-                onTap: () {
-                  // Navigate to security
-                },
-              ),
+                _buildMenuItem(
+                  context,
+                  icon: Icons.lock_outline_rounded,
+                  title: 'Account Security',
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AccountSecurityScreen(),
+                      ),
+                    );
+                  },
+                ),
 
-              const SizedBox(height: 12),
+                const SizedBox(height: 12),
 
-              _buildMenuItem(
-                context,
-                icon: Icons.help_outline_rounded,
-                title: 'Customer Support',
-                onTap: () {
-                  // Navigate to support
-                },
-              ),
+                _buildMenuItem(
+                  context,
+                  icon: Icons.help_outline_rounded,
+                  title: 'Customer Support',
+                  onTap: () {
+                    // Navigate to support
+                  },
+                ),
 
-              const SizedBox(height: 40),
-            ],
+                const SizedBox(height: 40),
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      }),
     );
   }
 
@@ -370,8 +410,8 @@ class SettingProfileScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                context.read<AppCubit>().logout();
                 Navigator.pop(context);
-                // TODO: Implement logout logic
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red,

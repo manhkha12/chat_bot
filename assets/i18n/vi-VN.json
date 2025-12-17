@@ -1,3 +1,11 @@
 {
- 
+ "validate": {
+    "incorrect_email": "Vui lòng nhập đúng email",
+    "incorrect_pass": {
+      "password_character": "Mật khẩu có ít nhất 6 ký tự",
+      "specical_character": "Mật khẩu cần ít nhất 1 ký tự đặc biệt",
+      "uppercase": "Mật khẩu có ít nhất 1 chữ hoa"
+    },
+    "incorrect_username": "Tên hiển thị phải có ít nhất 3 ký tự"
+  }
 }

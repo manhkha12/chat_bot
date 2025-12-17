@@ -8,6 +8,6 @@ Future<void> registerRepositoryModules(GetIt getIt) async {
     ..registerLazySingleton(() => ModuleRespository(getIt(), getIt()))
     ..registerLazySingleton(() => AuthRepository(getIt(), getIt()))
     ..registerLazySingleton(
-      () => UserRepository(appProvider: getIt(), appConfig: getIt()),
+      () => UserRepository(appProvider: getIt(), appConfig: getIt(),authApi: getIt()),
     );
 }
